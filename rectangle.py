@@ -10,6 +10,13 @@ def area(a, b):
         Возвращаемое значение:
             area (float): площадь прямоугольника
     '''
+
+    if not(isinstance(a, int)) and not(isinstance(a, float)) or not(isinstance(b, int)) and not(isinstance(b, float)):
+        raise TypeError("not number")
+
+    if a < 0 or b < 0:
+        raise ValueError("negative number")
+
     return a * b 
 
 def perimeter(a, b):
@@ -24,4 +31,11 @@ def perimeter(a, b):
         Возвращаемое значение:
             perimeter (float): периметр прямоугольника
     '''
+
+    if not(isinstance(a, int)) and not(isinstance(a, float)) or not(isinstance(b, int)) and not(isinstance(b, float)):
+        raise TypeError("not number")
+
+    if a < 0 or b < 0:
+        raise ValueError("negative number")
+
     return (a + b) * 2 

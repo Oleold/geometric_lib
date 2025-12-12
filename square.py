@@ -9,6 +9,13 @@ def area(a):
         Возвращаемое значение:
             area (float): площадь квадрата
     '''
+
+    if not(isinstance(a, int)) and not(isinstance(a, float)):
+        raise TypeError("not number")
+
+    if a < 0:
+        raise ValueError("negative number")
+
     return a * a
 
 
@@ -22,4 +29,11 @@ def perimeter(a):
         Возвращаемое значение:
             perimeter (float): периметр квадрата
     '''
+
+    if not(isinstance(a, int)) and not(isinstance(a, float)):
+        raise TypeError("not number")
+
+    if a < 0:
+        raise ValueError("negative number")
+    
     return 4 * a
