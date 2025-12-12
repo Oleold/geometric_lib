@@ -19,6 +19,18 @@ class CircleTestCase(unittest.TestCase):
         self.assertEqual(circle.area(r), math.pi * r * r)
         self.assertEqual(circle.perimeter(r), 2 * math.pi * r)
 
+    def test_negative_radius_raises(self):
+        self.assertRaises(ValueError, circle.area, -1)
+        self.assertRaises(ValueError, circle.perimeter, -1)
+    
+    def test_str_radius_raises(self):
+        self.assertRaises(TypeError, circle.area, "s")
+        self.assertRaises(TypeError, circle.perimeter, "s")
+
+    def test_list_radius_raises(self):
+        self.assertRaises(TypeError, circle.area, [])
+        self.assertRaises(TypeError, circle.perimeter, [])
+
 class RectangleTestCase(unittest.TestCase):
     def test_zero_side(self):
        res = rectangle.area(10, 0)
@@ -61,6 +73,19 @@ class RectangleTestCase(unittest.TestCase):
         res2_p = rectangle.perimeter(5.5, 4.5)
         self.assertEqual(res1_p, res2_p)
 
+    def test_negative_sides_raises(self):
+        self.assertRaises(ValueError, rectangle.area, -1, 5)
+        self.assertRaises(ValueError, rectangle.perimeter, -1, 5)
+        self.assertRaises(ValueError, rectangle.area, 1, -5)
+        self.assertRaises(ValueError, rectangle.perimeter, 1, -5)
+
+    def test_str_sides_raises(self):
+        self.assertRaises(TypeError, rectangle.area, "s", "s")
+        self.assertRaises(TypeError, rectangle.perimeter, "s", "s")
+
+    def test_list_sides_raises(self):
+        self.assertRaises(TypeError, rectangle.area, [])
+        self.assertRaises(TypeError, rectangle.perimeter, [], [])
 
 class SquareTestCase(unittest.TestCase):
     def test_zero_side(self):
@@ -74,6 +99,14 @@ class SquareTestCase(unittest.TestCase):
     def test_float_side(self):
         self.assertEqual(square.area(6.7), 44.89)
         self.assertEqual(square.perimeter(2.5), 10)
+
+    def test_str_sides_raises(self):
+        self.assertRaises(TypeError, square.area, "s")
+        self.assertRaises(TypeError, square.perimeter, "s")
+
+    def test_list_sides_raises(self):
+        self.assertRaises(TypeError, square.area, [])
+        self.assertRaises(TypeError, square.perimeter, [])
 
 class TriangleTestCase(unittest.TestCase):
     def test_zero_height(self):
@@ -104,3 +137,15 @@ class TriangleTestCase(unittest.TestCase):
         res1_p = triangle.perimeter(4.5, 5.5, 3.5)
         res2_p = triangle.perimeter(5.5, 3.5, 4.5)
         self.assertEqual(res1_p, res2_p)
+
+    def test_negative_sides_raises(self):
+        self.assertRaises(ValueError, triangle.area, -1, 5)
+        self.assertRaises(ValueError, triangle.perimeter, -1, 5, 4)
+
+    def test_str_sides_raises(self):
+        self.assertRaises(TypeError, triangle.area, "s", "s")
+        self.assertRaises(TypeError, square.perimeter, "s", "s", "s")
+
+    def test_list_sides_raises(self):
+        self.assertRaises(TypeError, triangle.area, [], [])
+        self.assertRaises(TypeError, square.perimeter, [], [], [])
