@@ -100,6 +100,10 @@ class SquareTestCase(unittest.TestCase):
         self.assertEqual(square.area(6.7), 44.89)
         self.assertEqual(square.perimeter(2.5), 10)
 
+    def test_negative_sides_raises(self):
+        self.assertRaises(ValueError, square.area, -1)
+        self.assertRaises(ValueError, square.perimeter, -1)
+
     def test_str_sides_raises(self):
         self.assertRaises(TypeError, square.area, "s")
         self.assertRaises(TypeError, square.perimeter, "s")
