@@ -20,45 +20,87 @@ class CircleTestCase(unittest.TestCase):
         self.assertEqual(circle.perimeter(r), 2 * math.pi * r)
 
 class RectangleTestCase(unittest.TestCase):
-    def test_zero_mul(self):
+    def test_zero_side(self):
        res = rectangle.area(10, 0)
        self.assertEqual(res, 0)
+       res = rectangle.perimeter(0, 0)
+       self.assertEqual(res, 0)
        
-    def test_square_mul(self):
+    def test_square_side(self):
        res = rectangle.area(10, 10)
        self.assertEqual(res, 100)
+       res = rectangle.perimeter(10, 10)
+       self.assertEqual(res, 40)
 
-    def test_different_mul(self):
+    def test_different_side(self):
        res = rectangle.area(10, 20)
        self.assertEqual(res, 200)
+       res = rectangle.perimeter(10, 20)
+       self.assertEqual(res, 60)
 
-    def test_float_mul(self):
+    def test_float_side(self):
        res = rectangle.area(5.5, 5.5)
        self.assertEqual(res, 30.25)
+       res = rectangle.perimeter(5.5, 5.5)
+       self.assertEqual(res, 22.0)
+       
+
+    def test_reverse_int_side(self):
+        res1_a = rectangle.area(4, 5)
+        res2_a = rectangle.area(5, 4)
+        self.assertEqual(res1_a, res2_a)
+        res1_p = rectangle.perimeter(4, 5)
+        res2_p = rectangle.perimeter(5, 4)
+        self.assertEqual(res1_p, res2_p)
+    
+    def test_reverse_float_side(self):
+        res1_a = rectangle.area(4.5, 5.5)
+        res2_a = rectangle.area(5.5, 4.5)
+        self.assertEqual(res1_a, res2_a)
+        res1_p = rectangle.perimeter(4.5, 5.5)
+        res2_p = rectangle.perimeter(5.5, 4.5)
+        self.assertEqual(res1_p, res2_p)
+
 
 class SquareTestCase(unittest.TestCase):
     def test_zero_side(self):
-        self.assertEqual(square.area(0), 0.0)
-        self.assertEqual(square.perimeter(0), 0.0)
+        self.assertEqual(square.area(0), 0)
+        self.assertEqual(square.perimeter(0), 0)
 
     def test_positive_side(self):
-        self.assertEqual(square.area(5), 25.0)
-        self.assertEqual(square.perimeter(5), 20.0)
+        self.assertEqual(square.area(5), 25)
+        self.assertEqual(square.perimeter(5), 20)
 
     def test_float_side(self):
-        self.assertEqual(square.area(2.5), 6.25)
-        self.assertEqual(square.perimeter(2.5), 10.0)
+        self.assertEqual(square.area(6.7), 44.89)
+        self.assertEqual(square.perimeter(2.5), 10)
 
 class TriangleTestCase(unittest.TestCase):
     def test_zero_height(self):
-        self.assertEqual(triangle.area(10, 0), 0.0)
+        self.assertEqual(triangle.area(10, 0), 0)
 
     def test_zero_base(self):
-        self.assertEqual(triangle.area(0, 10), 0.0)
+        self.assertEqual(triangle.area(0, 10), 0)
 
     def test_sides_3_4_5(self):
-        self.assertEqual(triangle.area(3, 4), 6.0)
-        self.assertEqual(triangle.perimeter(3, 4, 5), 12.0)
+        self.assertEqual(triangle.area(3, 4), 6)
+        self.assertEqual(triangle.perimeter(3, 4, 5), 12)
 
     def test_float_sides(self):
         self.assertEqual(triangle.perimeter(2.5, 3.5, 4.0), 10.0)
+
+    def test_reverse_int_sides(self):
+        res1_a = triangle.area(4, 5)
+        res2_a = triangle.area(5, 4)
+        self.assertEqual(res1_a, res2_a)
+        res1_p = triangle.perimeter(3, 4, 5)
+        res2_p = triangle.perimeter(5, 3, 4)
+        self.assertEqual(res1_p, res2_p)
+    
+    def test_reverse_float_sides(self):
+        res1_a = triangle.area(4.5, 5.5)
+        res2_a = triangle.area(5.5, 4.5)
+        self.assertEqual(res1_a, res2_a)
+        res1_p = triangle.perimeter(4.5, 5.5, 3.5)
+        res2_p = triangle.perimeter(5.5, 3.5, 4.5)
+        self.assertEqual(res1_p, res2_p)
